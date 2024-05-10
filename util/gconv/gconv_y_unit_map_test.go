@@ -25,20 +25,25 @@ var mapTests = []struct {
 	{map[string]float64{"k1": 1.1}, map[string]interface{}{"k1": 1.1}},
 	{map[string]string{"k1": "v1"}, map[string]interface{}{"k1": "v1"}},
 
+	{`{"earth": "亚马逊雨林"}`,
+		map[string]interface{}{"earth": "亚马逊雨林"}},
+	{[]byte(`{"earth": "撒哈拉沙漠"}`),
+		map[string]interface{}{"earth": "撒哈拉沙漠"}},
+
 	{struct {
-		Name  string
-		Place string
+		Earth string
 	}{
-		Name:  "Earth",
-		Place: "马里亚纳海沟",
-	}, map[string]interface{}{"Name": "Earth", "Place": "马里亚纳海沟"}},
+		Earth: "大峡谷",
+	}, map[string]interface{}{"Earth": "大峡谷"}},
 	{&struct {
-		Name  string
-		Place string
+		Earth string
 	}{
-		Name:  "Earth",
-		Place: "马里亚纳海沟",
-	}, map[string]interface{}{"Name": "Earth", "Place": "马里亚纳海沟"}},
+		Earth: "马里亚纳海沟",
+	}, map[string]interface{}{"Earth": "马里亚纳海沟"}},
+
+	{[]int{}, map[string]interface{}{}},
+	{[]int{1, 2, 3}, map[string]interface{}{"1": "2", "3": nil}},
+	{[]int{1, 2, 3, 4}, map[string]interface{}{"1": "2", "3": "4"}},
 }
 
 func TestMap(t *testing.T) {
