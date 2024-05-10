@@ -146,6 +146,7 @@ func TestMapStrStr(t *testing.T) {
 }
 
 func TestMapWithMapOption(t *testing.T) {
+	// Test for option: deep.
 	gtest.C(t, func(t *gtest.T) {
 		var testMapDeep = struct {
 			Earth      string
@@ -165,6 +166,7 @@ func TestMapWithMapOption(t *testing.T) {
 		t.AssertNE(dtk, dfk)
 	})
 
+	// Test for option: omitEmpty.
 	gtest.C(t, func(t *gtest.T) {
 		var testMapOmitEmpty = struct {
 			Earth   string
@@ -181,6 +183,7 @@ func TestMapWithMapOption(t *testing.T) {
 		t.Assert(r, map[string]interface{}{"Earth": "死海"})
 	})
 
+	// Test for option: tags.
 	gtest.C(t, func(t *gtest.T) {
 		var testMapOmitEmpty = struct {
 			Earth string `gconv:"errEarth" chinese:"地球" french:"Terre"`
