@@ -592,7 +592,7 @@ func Test_MapWithDeepOption(t *testing.T) {
 	})
 }
 
-func TestMapStrStr(t *testing.T) {
+func TestMapStrStr_2(t *testing.T) {
 	gtest.C(t, func(t *gtest.T) {
 		t.Assert(gconv.MapStrStr(map[string]string{"k": "v"}), map[string]string{"k": "v"})
 		t.Assert(gconv.MapStrStr(`{}`), nil)
