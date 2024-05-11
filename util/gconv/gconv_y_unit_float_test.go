@@ -65,7 +65,7 @@ var floatTests = []struct {
 	{[]int{1, 2, 3}, 0, 0},
 
 	{map[int]int{1: 1}, 0, 0},
-	{map[string]string{"Earth": "珠穆朗玛峰"}, 0, 0},
+	{map[string]string{"Earth": "太平洋"}, 0, 0},
 
 	{struct{}{}, 0, 0},
 	{make(chan interface{}), 0, 0},
