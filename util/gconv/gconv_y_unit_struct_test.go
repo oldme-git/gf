@@ -171,9 +171,9 @@ func TestStructs(t *testing.T) {
 			var (
 				err     error
 				tests   = []map[string]string{test, test}
-				expects = []*structExpect{}
+				expects []*structExpect
 			)
-			err = gconv.Structs(tests, expects)
+			err = gconv.Structs(tests, &expects)
 			t.AssertNil(err)
 			t.Assert(len(expects), 2)
 			for _, expect := range expects {
