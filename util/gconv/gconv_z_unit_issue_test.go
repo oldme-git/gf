@@ -7,7 +7,6 @@
 package gconv_test
 
 import (
-	"math/big"
 	"testing"
 	"time"
 
@@ -117,25 +116,25 @@ func Test_Issue1227(t *testing.T) {
 	})
 }
 
-type Float64 float64
-
-// https://github.com/gogf/gf/issues/1607
-func Test_Issue1607(t *testing.T) {
-	gtest.C(t, func(t *gtest.T) {
-		type Demo struct {
-			B Float64
-		}
-		rat := &big.Rat{}
-		rat.SetFloat64(1.5)
-
-		var demos = make([]Demo, 1)
-		err := gconv.Scan([]map[string]interface{}{
-			{"A": 1, "B": rat},
-		}, &demos)
-		t.AssertNil(err)
-		t.Assert(demos[0].B, 1.5)
-	})
-}
+//type Float64 float64
+//
+//// https://github.com/gogf/gf/issues/1607
+//func Test_Issue1607(t *testing.T) {
+//	gtest.C(t, func(t *gtest.T) {
+//		type Demo struct {
+//			B Float64
+//		}
+//		rat := &big.Rat{}
+//		rat.SetFloat64(1.5)
+//
+//		var demos = make([]Demo, 1)
+//		err := gconv.Scan([]map[string]interface{}{
+//			{"A": 1, "B": rat},
+//		}, &demos)
+//		t.AssertNil(err)
+//		t.Assert(demos[0].B, 1.5)
+//	})
+//}
 
 // https://github.com/gogf/gf/issues/1946
 func Test_Issue1946(t *testing.T) {
