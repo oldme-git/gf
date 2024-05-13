@@ -117,6 +117,8 @@ func Test_Issue1227(t *testing.T) {
 	})
 }
 
+type Float64 float64
+
 // https://github.com/gogf/gf/issues/1607
 func Test_Issue1607(t *testing.T) {
 	gtest.C(t, func(t *gtest.T) {
