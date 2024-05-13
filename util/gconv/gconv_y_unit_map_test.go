@@ -120,14 +120,16 @@ func TestMap(t *testing.T) {
 func TestMaps(t *testing.T) {
 	gtest.C(t, func(t *gtest.T) {
 		for _, test := range mapTests {
-			maps := []interface{}{
-				test.value,
-				test.value,
-			}
-			expects := []interface{}{
-				test.expect,
-				test.expect,
-			}
+			var (
+				maps = []interface{}{
+					test.value,
+					test.value,
+				}
+				expects = []interface{}{
+					test.expect,
+					test.expect,
+				}
+			)
 			t.Assert(gconv.Maps(maps), expects)
 			t.Assert(gconv.SliceMap(maps), expects)
 		}
@@ -195,5 +197,19 @@ func TestMapWithMapOption(t *testing.T) {
 
 		f := gconv.Map(testMapOmitEmpty, gconv.MapOption{Tags: []string{"french", "chinese"}})
 		t.Assert(f, map[string]interface{}{"Terre": "尼莫点"})
+	})
+}
+
+// See gconv_test.TestScan for more.
+func TestMapToMap(t *testing.T) {
+	gtest.C(t, func(t *gtest.T) {
+		var (
+			err    error
+			value  = map[string]string{"k1": "v1"}
+			expect = make(map[string]interface{})
+		)
+		err = gconv.MapToMap(value, &expect)
+		t.Assert(err, nil)
+		t.Assert(value["k1"], expect["k1"])
 	})
 }
