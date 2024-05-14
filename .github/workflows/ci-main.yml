@@ -224,7 +224,7 @@ jobs:
       run: bash .github/workflows/ci-main.sh
 
     - name: Build & Test & Coverage
-      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+      if: ${{ github.event_name == 'push'}}
       run: bash .github/workflows/ci-main.sh coverage
 
     - name: Stop Redis Cluster Containers
@@ -241,7 +241,7 @@ jobs:
 
     - name: Report Coverage
       uses: codecov/codecov-action@v4
-      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
+      if: ${{ github.event_name == 'push' }}
       with:
         flags: go-${{ matrix.go-version }}-${{ matrix.goarch }}
         token: ${{ secrets.CODECOV_TOKEN }}
