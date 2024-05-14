@@ -224,7 +224,7 @@ jobs:
       run: bash .github/workflows/ci-main.sh
 
     - name: Build & Test & Coverage
-      if: ${{ github.event_name == 'push'}}
+      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }}
       run: bash .github/workflows/ci-main.sh coverage
 
     - name: Stop Redis Cluster Containers
